@@ -7,29 +7,26 @@
 //
 
 import UIKit
+import GloboIDSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+        
+        return GloboIDSDK.application(application,
+                                      didFinishLaunchingWithOptions: launchOptions,
+                                      appID: "domene.GloboIDTest",
+                                      googleClientID: "609490452886-4ueeh66u2frpt8lif5pcl7tl4uqe4sh0.apps.googleusercontent.com",
+                                      googleAppID: "1:609490452886:ios:4bd72858a066cd9dcd1db7",
+                                      gcmSenderID: "609490452886")
     }
 
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
+        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
 

@@ -1,0 +1,6 @@
+framework module Ciao {
+  umbrella header "Ciao-umbrella.h"
+
+  export *
+  module * { export * }
+}

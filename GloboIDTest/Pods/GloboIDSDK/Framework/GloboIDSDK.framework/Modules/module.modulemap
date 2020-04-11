@@ -1,0 +1,10 @@
+framework module GloboIDSDK {
+    umbrella header "GloboIDSDKUmbrella.h"
+    
+    export *
+    module * { export * }
+}
+module GloboIDSDK.Swift {
+    header "GloboIDSDK-Swift.h"
+    requires objc
+}

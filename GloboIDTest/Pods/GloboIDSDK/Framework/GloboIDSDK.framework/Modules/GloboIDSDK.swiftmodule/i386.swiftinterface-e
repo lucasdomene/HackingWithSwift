@@ -1,0 +1,530 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 effective-4.2 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target i386-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name GloboIDSDK
+import AuthenticationServices
+import Ciao
+import CustomHttpHeadersURLProtocol
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FirebaseCore
+import FirebaseMessaging
+import Foundation
+@_exported import GloboIDSDK
+import GoogleSignIn
+import KeychainAccess
+import MBProgressHUD
+import Nappa
+import Result
+import Swift
+import UIKit
+@objc public enum PushTokenEventType : Swift.Int {
+  case requestNew
+  case reuse
+  case receivedNew
+  case requestTimeout
+  case pushDenied
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class EventTracker : ObjectiveC.NSObject {
+  @objc public static var trackedUser: TrackedUser? {
+    @objc get
+  }
+  @objc public class func pageview(_ object: Any)
+  @objc public class func pageview(object: Any, product: Swift.String? = nil, optionalAttributes: [Swift.String : Swift.String] = [String: String]())
+  @objc public class func postclick(_ object: Any, product: Swift.String, feedType: Swift.String, hasPhoto: Swift.Bool, hasSummary: Swift.Bool, id: Swift.String, position: Swift.Int, postType: Swift.String, url: Swift.String, optionalAttributes: [Swift.String : Any]? = nil)
+  @objc public class func postview(_ object: Any, product: Swift.String, feedType: Swift.String, hasPhoto: Swift.Bool, hasSummary: Swift.Bool, id: Swift.String, position: Swift.Int, postType: Swift.String, url: Swift.String, feedViewMilliseconds: Swift.Int, postViewMilliseconds: Swift.Int, optionalAttributes: [Swift.String : Any]? = nil)
+  @objc public class func screenview(_ object: UIKit.UIViewController, action: Swift.String? = nil, referrer: Swift.String)
+  @objc public class func screenview(object: Any, product: Swift.String? = nil, action: Swift.String? = nil, referrer: Swift.String, optionalAttributes: [Swift.String : Swift.String]? = nil)
+  @objc public class func register(_ operation: Swift.String, object: Any, product: Swift.String? = nil, attributes: [Swift.String : Any] = [String: Any]())
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class RequestAuthTokenViewController : UIKit.UIViewController {
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(GLBLoginService) public class LoginService : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public init(service: Nappa.HTTPService)
+  @objc deinit
+}
+extension LoginService {
+  @objc dynamic public func fetchGloboUserData(withGLBID glbID: Swift.String, success: @escaping (GloboUser?) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc dynamic public func authorizeUser(withGLBID glbid: Swift.String, serviceId: Swift.Int, success: @escaping (Swift.Bool) -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+  @objc dynamic public func logout(withGLBID glbid: Swift.String, success: @escaping () -> Swift.Void, failure: @escaping (Swift.Error?) -> Swift.Void)
+}
+@objc public enum HTTPStatusCode : Swift.Int {
+  case `continue` = 100
+  case switchingProtocols = 101
+  case processing = 102
+  case checkpoint = 103
+  @objc(HTTPStatusCodeOK) case ok = 200
+  case created = 201
+  case accepted = 202
+  case nonAuthoritativeInformation = 203
+  case noContent = 204
+  case resetContent = 205
+  case partialContent = 206
+  case multiStatus = 207
+  case alreadyReported = 208
+  @objc(HTTPStatusCodeIMUsed) case imUsed = 226
+  case multipleChoices = 300
+  case movedPermanently = 301
+  case found = 302
+  case seeOther = 303
+  case notModified = 304
+  case useProxy = 305
+  case temporaryRedirect = 307
+  case permanentRedirect = 308
+  case badRequest = 400
+  case unauthorized = 401
+  case paymentRequired = 402
+  case forbidden = 403
+  case notFound = 404
+  case methodNotAllowed = 405
+  case notAcceptable = 406
+  case proxyAuthenticationRequired = 407
+  case requestTimeout = 408
+  case conflict = 409
+  case gone = 410
+  case lengthRequired = 411
+  case preconditionFailed = 412
+  case payloadTooLarge = 413
+  @objc(HTTPStatusCodeURITooLong) case uriTooLong = 414
+  case unsupportedMediaType = 415
+  case rangeNotSatisfiable = 416
+  case expectationFailed = 417
+  case imATeapot = 418
+  case misdirectedRequest = 421
+  case unprocessableEntity = 422
+  case locked = 423
+  case failedDependency = 424
+  case upgradeRequired = 426
+  case preconditionRequired = 428
+  case tooManyRequests = 429
+  case requestHeaderFieldsTooLarge = 431
+  @objc(HTTPStatusCodeIISLoginTimeout) case iisLoginTimeout = 440
+  case nginxNoResponse = 444
+  @objc(HTTPStatusCodeIISRetryWith) case iisRetryWith = 449
+  case blockedByWindowsParentalControls = 450
+  case unavailableForLegalReasons = 451
+  case nginxSSLCertificateError = 495
+  case nginxSSLCertificateRequired = 496
+  case nginxHTTPToHTTPS = 497
+  case tokenExpired = 498
+  case nginxClientClosedRequest = 499
+  case internalServerError = 500
+  case notImplemented = 501
+  case badGateway = 502
+  case serviceUnavailable = 503
+  case gatewayTimeout = 504
+  @objc(HTTPStatusCodeHTTPVersionNotSupported) case httpVersionNotSupported = 505
+  case variantAlsoNegotiates = 506
+  case insufficientStorage = 507
+  case loopDetected = 508
+  case bandwidthLimitExceeded = 509
+  case notExtended = 510
+  case networkAuthenticationRequired = 511
+  case siteIsFrozen = 530
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct GloboIDHTTPService {
+  public static func configure()
+}
+@objc(GLBAuthHandler) public class AuthHandler : ObjectiveC.NSObject {
+  @objc(sharedInstance) public static let shared: AuthHandler
+  @objc public func deleteAuthTokenFromKeychain()
+  @objc override dynamic public init()
+  @objc deinit
+}
+public typealias UserAttributesGetCompletionHandler = (Swift.Result<[GloboIDUserAttribute], GetUserAttributesError>) -> Swift.Void
+public typealias UserAttributesSaveCompletionHandler = (Swift.Result<Swift.Void, SaveUserAttributesError>) -> Swift.Void
+@objc(GLBHorizonWorker) public class HorizonWorker : ObjectiveC.NSObject {
+  public var isRunning: Swift.Bool {
+    get
+  }
+  @objc deinit
+  @objc override dynamic public init()
+}
+public enum Level : Swift.Int {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum SaveUserAttributesError : Swift.Error {
+  case invalidBody(error: Swift.String)
+  case invalidClientID
+  case serializationError
+  case other(error: Swift.Error?)
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+public enum CrossLoginStatus {
+  case logged
+  case denied
+  case codeNotFound
+  case error
+  public static func == (a: CrossLoginStatus, b: CrossLoginStatus) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public struct SessionRequestData {
+}
+public enum SessionServiceError : Swift.Error {
+  case unexpectedResponse
+  case invalidUserCode
+  public static func == (a: SessionServiceError, b: SessionServiceError) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol SessionServiceProtocol {
+  func activate(withCode code: Swift.String, glbID: Swift.String, serviceId: Swift.String, completionHandler: @escaping (CrossLoginStatus) -> Swift.Void)
+  func startActivation(withCode code: Swift.String, glbID: Swift.String, serviceId: Swift.String, completionHandler: @escaping (SessionRequestData?, SessionServiceError?) -> Swift.Void)
+  func getSessions(withGlbID glbId: Swift.String, completionHandler: @escaping (Result.Result<[Session], Swift.String>) -> Swift.Void)
+}
+public struct SessionService : SessionServiceProtocol {
+  public func startActivation(withCode code: Swift.String, glbID: Swift.String, serviceId: Swift.String, completionHandler: @escaping (SessionRequestData?, SessionServiceError?) -> Swift.Void)
+  public func activate(withCode code: Swift.String, glbID: Swift.String, serviceId: Swift.String, completionHandler: @escaping (CrossLoginStatus) -> Swift.Void)
+  public func logoutDevice(withSessionId sessionId: Swift.String, andGlbID glbId: Swift.String, success: @escaping (Swift.Bool) -> Swift.Void)
+  public func getSessions(withGlbID glbId: Swift.String, completionHandler: @escaping (Result.Result<[Session], Swift.String>) -> Swift.Void)
+}
+@objc(GLBUserData) public enum UserData : Swift.Int {
+  case birthdate
+  case gender
+  case phone
+  case cpf
+  case address
+  case city
+  case facebook
+  public static func fromString(_ string: Swift.String) -> UserData?
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class SessionsViewController : UIKit.UIViewController {
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SessionsViewController : UIKit.UITableViewDelegate, UIKit.UITableViewDataSource {
+  @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @objc dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @objc dynamic public func tableView(_ tableView: UIKit.UITableView, commit editingStyle: UIKit.UITableViewCell.EditingStyle, forRowAt indexPath: Foundation.IndexPath)
+  @objc dynamic public func tableView(_ tableView: UIKit.UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: Foundation.IndexPath) -> Swift.String?
+}
+@objc public class Environment : ObjectiveC.NSObject {
+  @objc public static let DEV: Environment
+  @objc public static let QA: Environment
+  @objc public static let QA01: Environment
+  @objc public static let PROD: Environment
+  @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+  @objc public static var values: [Environment] {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public class Globals : ObjectiveC.NSObject {
+  @objc public static var environment: Environment {
+    @objc get
+    @objc set
+  }
+  @objc public class var urlFlow: Swift.String {
+    @objc get
+  }
+  @objc public class var urlFlowLoginFacebook: Swift.String {
+    @objc get
+  }
+  @objc public class var urlFlowRestorePassword: Swift.String {
+    @objc get
+  }
+  @objc public class var urlPendingActivation: Swift.String {
+    @objc get
+  }
+  @objc public class var cookieDomain: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension String : Swift.Error {
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+@objc public class TrackedUser : ObjectiveC.NSObject {
+  @objc public enum Provider : Swift.Int {
+    case anonymous
+    case cadun
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc final public let id: Swift.String
+  @objc final public let provider: TrackedUser.Provider
+  public init(id: Swift.String, provider: TrackedUser.Provider)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension TrackedUser {
+  public static func == (lhs: TrackedUser, rhs: TrackedUser) -> Swift.Bool
+}
+public struct Session {
+  public init(json: [Swift.String : Any])
+}
+@objc public class GloboIDUserAttribute : ObjectiveC.NSObject {
+  @objc public init(key: Swift.String, value: Swift.String)
+  @objc final public let key: Swift.String
+  @objc final public let value: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol GloboIDUserTracingDelegate : AnyObject {
+  @objc func willShowLogin(isFallback: Swift.Bool)
+  @objc func willShowSignUp(isFallback: Swift.Bool)
+  @objc func willShowRestorePassword()
+  @objc func willShowProvisioning()
+  @objc func willShowPendingActivation()
+  @objc func willShowFacebookLogin()
+  @objc func willShowGoogleLogin()
+  @objc func willShowAppleLogin()
+  @objc func willShowUseTerms()
+  @objc func willShowPrivacyPolicy()
+}
+public enum GetUserAttributesError : Swift.Error {
+  case invalidSessionToken
+  case invalidBackstageToken
+  case serializationError
+  case other(error: Swift.Error?)
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+@objc(GLBAuthenticationManager) public class AuthenticationManager : ObjectiveC.NSObject {
+  @objc weak public var delegate: GLBLoginDelegate?
+  @objc public init(serviceId: Swift.Int, viewController: UIKit.UIViewController)
+  @objc public func signIn(withEmail email: Swift.String, password: Swift.String)
+  @objc public func signInWithFacebook()
+  @objc public func signInWithGoogle()
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension AuthenticationManager : GLBLoginDelegate {
+  @objc dynamic public func didLogin(with globoUser: GloboUser!)
+  @objc dynamic public func didCancelLogin()
+  @objc dynamic public func loginDidFailWithError(_ error: Swift.Error!, viewController: UIKit.UIViewController!)
+  @objc dynamic public func didLogout()
+  @objc dynamic public func didFinishPendingActivation()
+}
+@objc(GLBGloboUserRepository) public class GloboUserRepository : ObjectiveC.NSObject {
+  @objc public class func save(_ user: GloboUser)
+  @objc public class func loadUser() -> GloboUser?
+  @objc public class func delete()
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc(GLBFCMHandler) public class FCMHandler : ObjectiveC.NSObject {
+  open class func configure(googleAppID: Swift.String, gcmSenderID: Swift.String)
+  @objc public class func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any])
+  @objc public class func application(_ application: UIKit.UIApplication, didReceiveRemoteNotification userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  @objc deinit
+}
+@objc(GLBPortraitNavigationController) public class PortraitNavigationController : UIKit.UINavigationController {
+  @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public func viewDidLoad()
+  @available(iOS 5.0, *)
+  @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc(GLBUIPortraitViewController) public class UIPortraitViewController : UIKit.UIViewController {
+  @objc override dynamic open var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public func viewDidLoad()
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc public class GloboID : ObjectiveC.NSObject {
+  @objc(sharedInstance) public static var shared: GloboID {
+    get
+    }
+  @objc public var tracingDelegate: GloboIDUserTracingDelegate? {
+    get
+    }
+  @objc final public let horizonWorker: HorizonWorker
+  @objc public var appID: Swift.String {
+    get
+    }
+  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?, appID: Swift.String) -> Swift.Bool
+  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?, appID: Swift.String, googleClientID: Swift.String) -> Swift.Bool
+  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?, appID: Swift.String, googleClientID: Swift.String, googleAppID: Swift.String, gcmSenderID: Swift.String) -> Swift.Bool
+  @objc public func application(_ application: UIKit.UIApplication, didFinishLaunchingWithOptions launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?, appID: Swift.String, googleClientID: Swift.String, googleAppID: Swift.String, gcmSenderID: Swift.String, tracingDelegate: GloboIDUserTracingDelegate) -> Swift.Bool
+  @objc public func login(withServiceId serviceId: Swift.String, andViewController viewController: UIKit.UIViewController, hideSignUp: Swift.Bool = false, hideSocialButtons: Swift.Bool = false, delegate: GLBLoginDelegate?)
+  @objc public func signUp(withServiceId serviceId: Swift.String, viewController: UIKit.UIViewController, hideSocialButtons: Swift.Bool = false, delegate: GLBLoginDelegate?)
+  @objc public static func configureRequestTimeout(with timeout: Foundation.TimeInterval)
+  @objc public func registerUserTracingDelegate(_ tracingDelegate: GloboIDUserTracingDelegate)
+  @objc public func unregisterUserTracingDelegate()
+  @objc(getUserAttributesWithCompletion:) public func objc_getUserAttributes(completionHandler: @escaping ([GloboIDUserAttribute]?, Swift.Error?) -> Swift.Void)
+  @objc(saveUserAttributeForClientID:attribute:completion:) public func objc_saveUserAttribute(for clientID: Swift.String, attribute: GloboIDUserAttribute, completionHandler: @escaping (Swift.Error?) -> Swift.Void)
+  @objc(checkMissingDataForUser:requiredData:completion:) public func objc_checkMissingData(for user: GloboUser, requiredData: Swift.Set<Swift.Int>, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc(requestMissingDataWithViewController:user:requiredData:serviceID:completion:) public func objc_requestMissingData(withViewController viewController: UIKit.UIViewController, user: GloboUser, requiredData: Swift.Set<Swift.Int>, serviceID: Swift.String, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc public func getLoggedUser(completion: @escaping (GloboUser?, Swift.Error?) -> Swift.Void)
+  @objc public func isUserLogged(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc public func isLoggedUserPending(completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @objc public func isLoggedUserAuthorized(forServiceID serviceID: Swift.String, completion: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
+  @available(iOS 8, *)
+  @available(*, deprecated, message: "use application(_:open:options) instead, this method will be deprecated in a future version")
+  @objc public func application(_ application: UIKit.UIApplication, openURL url: Foundation.NSURL, sourceApplication: Swift.String?, annotation: Swift.AnyObject?) -> Swift.Bool
+  @available(iOS 9, *)
+  @objc public func application(_ app: UIKit.UIApplication, open url: Foundation.URL, options: [UIKit.UIApplication.OpenURLOptionsKey : Any] = [:]) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension GloboID {
+  @objc dynamic public func activateRemoteDevice(withServiceId serviceId: Swift.String, viewController: UIKit.UIViewController)
+  @objc dynamic public func startRemoteServiceDiscovery()
+  @objc dynamic public func stopRemoteServiceDiscovery()
+}
+extension GloboID {
+  @objc public static var bundle: Foundation.Bundle {
+    @objc get
+  }
+}
+extension HTTPStatusCode {
+  public var isInformational: Swift.Bool {
+    get
+  }
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var isRedirection: Swift.Bool {
+    get
+  }
+  public var isClientError: Swift.Bool {
+    get
+  }
+  public var isServerError: Swift.Bool {
+    get
+  }
+}
+extension HTTPStatusCode {
+  public var localizedReasonPhrase: Swift.String {
+    get
+  }
+}
+extension HTTPStatusCode : Swift.CustomDebugStringConvertible, Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension HTTPStatusCode {
+  public init?(HTTPResponse: Foundation.HTTPURLResponse?)
+}
+extension HTTPURLResponse {
+  public var statusCodeValue: HTTPStatusCode? {
+    get
+  }
+  @available(iOS 7.0, *)
+  @objc(initWithURL:statusCodeValue:HTTPVersion:headerFields:) convenience dynamic public init?(url: Foundation.URL, statusCode: HTTPStatusCode, httpVersion: Swift.String?, headerFields: [Swift.String : Swift.String]?)
+}
+extension HTTPStatusCode {
+  @available(*, deprecated, renamed: "payloadTooLarge")
+  public static let requestEntityTooLarge: HTTPStatusCode
+  @available(*, deprecated, renamed: "uriTooLong")
+  public static let requestURITooLong: HTTPStatusCode
+  @available(*, deprecated, renamed: "rangeNotSatisfiable")
+  public static let requestedRangeNotSatisfiable: HTTPStatusCode
+  @available(*, deprecated, renamed: "iisLoginTimeout")
+  public static let loginTimeout: HTTPStatusCode
+  @available(*, deprecated, renamed: "iisRetryWith")
+  public static let retryWith: HTTPStatusCode
+  @available(*, deprecated, renamed: "nginxNoResponse")
+  public static let noResponse: HTTPStatusCode
+  @available(*, deprecated, renamed: "nginxSSLCertificateError")
+  public static let certError: HTTPStatusCode
+  @available(*, deprecated, renamed: "nginxSSLCertificateRequired")
+  public static let noCert: HTTPStatusCode
+  @available(*, deprecated, renamed: "nginxHTTPToHTTPS")
+  public static let httpToHTTPS: HTTPStatusCode
+  @available(*, deprecated, renamed: "nginxClientClosedRequest")
+  public static let clientClosedRequest: HTTPStatusCode
+  @available(*, deprecated, renamed: "tooManyRequests")
+  public static let twitterEnhanceYourCalm: HTTPStatusCode
+}
+extension HTTPURLResponse {
+  @available(*, deprecated, renamed: "init(url:statusCode:httpVersion:headerFields:)", message: "Renamed to correct Swift 3 naming convention")
+  @nonobjc convenience public init?(url: Foundation.URL, statusCode: HTTPStatusCode, HTTPVersion: Swift.String?, headerFields: [Swift.String : Swift.String]?)
+}
+extension HTTPStatusCode {
+  @available(*, unavailable, message: "No longer used")
+  public static let switchProxy: HTTPStatusCode?
+  @available(*, unavailable, message: "No longer available")
+  public static let authenticationTimeout: HTTPStatusCode?
+  @available(*, unavailable, message: "Deprecated")
+  public static let springFrameworkMethodFailure: HTTPStatusCode?
+  @available(*, unavailable, renamed: "requestHeaderFieldsTooLarge", message: "Changed to a 431 status code")
+  public static let requestHeaderTooLarge: HTTPStatusCode?
+  @available(*, unavailable, message: "No longer available")
+  public static let networkTimeoutError: HTTPStatusCode?
+}
+extension PushTokenEventType : Swift.Equatable {}
+extension PushTokenEventType : Swift.Hashable {}
+extension PushTokenEventType : Swift.RawRepresentable {}
+extension HTTPStatusCode : Swift.Hashable {}
+extension HTTPStatusCode : Swift.RawRepresentable {}
+extension Level : Swift.Equatable {}
+extension Level : Swift.Hashable {}
+extension Level : Swift.RawRepresentable {}
+extension CrossLoginStatus : Swift.Equatable {}
+extension CrossLoginStatus : Swift.Hashable {}
+extension SessionServiceError : Swift.Hashable {}
+extension UserData : Swift.Hashable {}
+extension UserData : Swift.RawRepresentable {}
+extension TrackedUser.Provider : Swift.Equatable {}
+extension TrackedUser.Provider : Swift.Hashable {}
+extension TrackedUser.Provider : Swift.RawRepresentable {}

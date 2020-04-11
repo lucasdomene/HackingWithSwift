@@ -3,16 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29947FDD4C215D202209AC03 /* Pods_GloboIDTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FB6855F4D9DC9D3625453B /* Pods_GloboIDTest.framework */; };
 		37F8AF5A243E876200300B9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8AF59243E876200300B9A /* AppDelegate.swift */; };
 		37F8AF5C243E876200300B9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8AF5B243E876200300B9A /* SceneDelegate.swift */; };
 		37F8AF5E243E876200300B9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8AF5D243E876200300B9A /* ViewController.swift */; };
 		37F8AF61243E876200300B9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F8AF5F243E876200300B9A /* Main.storyboard */; };
 		37F8AF63243E876500300B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37F8AF62243E876500300B9A /* Assets.xcassets */; };
 		37F8AF66243E876500300B9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37F8AF64243E876500300B9A /* LaunchScreen.storyboard */; };
+		37F8AF6E243E89BE00300B9A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F8AF6D243E89BE00300B9A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		37F8AF62243E876500300B9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37F8AF65243E876500300B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37F8AF67243E876500300B9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37F8AF6D243E89BE00300B9A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52FB6855F4D9DC9D3625453B /* Pods_GloboIDTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GloboIDTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAECE05611719E1BA032FF28 /* Pods-GloboIDTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GloboIDTest.debug.xcconfig"; path = "Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest.debug.xcconfig"; sourceTree = "<group>"; };
+		BAA7366D596E375171ECCAB0 /* Pods-GloboIDTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GloboIDTest.release.xcconfig"; path = "Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29947FDD4C215D202209AC03 /* Pods_GloboIDTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				37F8AF58243E876200300B9A /* GloboIDTest */,
 				37F8AF57243E876200300B9A /* Products */,
+				EF883F8242993010C12A166A /* Pods */,
+				4377A3A3F1D2B9CA6501BCE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +72,26 @@
 				37F8AF62243E876500300B9A /* Assets.xcassets */,
 				37F8AF64243E876500300B9A /* LaunchScreen.storyboard */,
 				37F8AF67243E876500300B9A /* Info.plist */,
+				37F8AF6D243E89BE00300B9A /* GoogleService-Info.plist */,
 			);
 			path = GloboIDTest;
+			sourceTree = "<group>";
+		};
+		4377A3A3F1D2B9CA6501BCE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				52FB6855F4D9DC9D3625453B /* Pods_GloboIDTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF883F8242993010C12A166A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AAECE05611719E1BA032FF28 /* Pods-GloboIDTest.debug.xcconfig */,
+				BAA7366D596E375171ECCAB0 /* Pods-GloboIDTest.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +101,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37F8AF6A243E876500300B9A /* Build configuration list for PBXNativeTarget "GloboIDTest" */;
 			buildPhases = (
+				C77797801337E87889701FC6 /* [CP] Check Pods Manifest.lock */,
 				37F8AF52243E876200300B9A /* Sources */,
 				37F8AF53243E876200300B9A /* Frameworks */,
 				37F8AF54243E876200300B9A /* Resources */,
+				D3BABFDC08F08549191FE939 /* [CP] Embed Pods Frameworks */,
+				A276DBC89C76CE37ED0C21D7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,12 +156,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				37F8AF66243E876500300B9A /* LaunchScreen.storyboard in Resources */,
+				37F8AF6E243E89BE00300B9A /* GoogleService-Info.plist in Resources */,
 				37F8AF63243E876500300B9A /* Assets.xcassets in Resources */,
 				37F8AF61243E876200300B9A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A276DBC89C76CE37ED0C21D7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C77797801337E87889701FC6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GloboIDTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3BABFDC08F08549191FE939 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GloboIDTest/Pods-GloboIDTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		37F8AF52243E876200300B9A /* Sources */ = {
@@ -282,6 +372,7 @@
 		};
 		37F8AF6B243E876500300B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAECE05611719E1BA032FF28 /* Pods-GloboIDTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +391,7 @@
 		};
 		37F8AF6C243E876500300B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAA7366D596E375171ECCAB0 /* Pods-GloboIDTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

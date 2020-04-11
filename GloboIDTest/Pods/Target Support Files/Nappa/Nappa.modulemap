@@ -1,0 +1,6 @@
+framework module Nappa {
+  umbrella header "Nappa-umbrella.h"
+
+  export *
+  module * { export * }
+}

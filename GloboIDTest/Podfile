@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source "https://github.com/globoi/pods-repository"
+
+use_frameworks!
+
+platform :ios, '12.0'
+
+target 'GloboIDTest' do
+  pod "GloboIDSDK", '~> 2.2.1'
+end
+
